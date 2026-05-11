@@ -1,0 +1,1835 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Đào Tạo AI Trong Mạng 5G Viettel | Chương Trình Nội Bộ 2025</title>
+<meta name="description" content="Chương trình đào tạo 5 ngày dành cho kỹ sư vận hành RAN/Core/Cloud/Transmission – ứng dụng AI thực tế trong mạng 5G Viettel. Miễn phí cho CBCNV Viettel.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --red: #E30613;
+  --red-dark: #B30000;
+  --red-light: #FF2D2D;
+  --black: #0A0A0A;
+  --dark: #1A1A1A;
+  --gray1: #4A4A4A;
+  --gray2: #7F7F7F;
+  --gray3: #CCCCCC;
+  --gray4: #F5F5F5;
+  --white: #FFFFFF;
+  --font-display: 'Barlow Condensed', sans-serif;
+  --font-body: 'Source Sans 3', sans-serif;
+  --font-mono: 'Roboto Mono', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--gray1);
+  background: var(--white);
+  overflow-x: hidden;
+}
+
+/* ── UTILITY ── */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.accent-bar { width: 48px; height: 4px; background: var(--red); margin: 16px auto 0; }
+.accent-bar.left { margin-left: 0; }
+
+.btn-primary {
+  display: inline-block;
+  background: var(--red);
+  color: var(--white);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  padding: 14px 32px;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 200ms ease-out, transform 200ms ease-out;
+}
+.btn-primary:hover { background: var(--red-dark); transform: scale(1.02); }
+
+.btn-outline {
+  display: inline-block;
+  background: transparent;
+  color: var(--white);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 16px;
+  padding: 13px 30px;
+  border-radius: 3px;
+  border: 1.5px solid var(--white);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 200ms ease-out, transform 200ms ease-out;
+}
+.btn-outline:hover { background: rgba(255,255,255,0.1); transform: scale(1.02); }
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 12px;
+}
+
+/* ── NAV ── */
+#navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  height: 68px;
+  background: var(--white);
+  border-bottom: 1px solid transparent;
+  transition: box-shadow 200ms ease, border-color 200ms ease;
+  display: flex; align-items: center;
+}
+#navbar.scrolled { box-shadow: 0 2px 8px rgba(0,0,0,0.12); border-color: var(--gray3); }
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%; max-width: 1200px;
+  margin: 0 auto; padding: 0 24px;
+}
+
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-logo-mark {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--red);
+  letter-spacing: -1px;
+  line-height: 1;
+}
+.nav-logo-sub {
+  font-family: var(--font-body);
+  font-size: 10px;
+  color: var(--gray2);
+  line-height: 1.3;
+  max-width: 120px;
+  letter-spacing: 0.2px;
+}
+.nav-logo-divider { width: 1px; height: 28px; background: var(--gray3); }
+
+.nav-menu { display: flex; align-items: center; gap: 32px; list-style: none; }
+.nav-menu a {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--gray1);
+  text-decoration: none;
+  transition: color 200ms;
+}
+.nav-menu a:hover { color: var(--red); }
+
+.nav-right { display: flex; align-items: center; gap: 20px; }
+.nav-hotline { font-size: 13px; color: var(--gray2); font-family: var(--font-body); }
+.nav-hotline strong { color: var(--gray1); }
+.nav-cta { padding: 9px 20px; font-size: 14px; }
+
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+.hamburger span { display: block; width: 22px; height: 2px; background: var(--black); transition: all 200ms; border-radius: 2px; }
+
+/* ── HERO ── */
+#hero {
+  min-height: 100vh;
+  background: var(--black);
+  position: relative;
+  display: flex; align-items: center;
+  padding-top: 68px;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 70% 50%, rgba(227,6,19,0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 20% 80%, rgba(227,6,19,0.05) 0%, transparent 60%);
+}
+
+/* Circuit-board pattern */
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(227,6,19,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(227,6,19,0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 80% 80% at 70% 50%, black 30%, transparent 80%);
+}
+
+/* Animated scan line */
+.hero-scan {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(227,6,19,0.4), transparent);
+  animation: scan 4s linear infinite;
+}
+@keyframes scan { 0% { top: 0; } 100% { top: 100%; } }
+
+.hero-inner {
+  position: relative; z-index: 2;
+  display: grid;
+  grid-template-columns: 55% 45%;
+  align-items: center;
+  gap: 64px;
+  width: 100%; max-width: 1200px;
+  margin: 0 auto;
+  padding: 96px 24px;
+}
+
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 20px;
+  display: flex; align-items: center; gap: 12px;
+}
+.hero-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 24px; height: 2px;
+  background: var(--red);
+}
+
+.hero-h1 {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 5vw, 66px);
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1.05;
+  letter-spacing: -1px;
+  margin-bottom: 24px;
+}
+.hero-h1 em { color: var(--red); font-style: normal; }
+
+.hero-sub {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--gray3);
+  line-height: 1.7;
+  max-width: 520px;
+  margin-bottom: 20px;
+}
+
+.hero-target {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; color: var(--gray2);
+  margin-bottom: 36px;
+}
+.hero-target svg { color: var(--red); flex-shrink: 0; }
+.hero-target span { color: var(--gray2); }
+.hero-target strong { color: var(--gray3); }
+
+.hero-ctas { display: flex; flex-direction: column; gap: 8px; margin-bottom: 40px; }
+.hero-ctas .cta-row { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+.hero-ctas .btn-primary { font-size: 17px; padding: 16px 36px; }
+.hero-micro {
+  font-size: 12px; color: var(--gray2);
+  font-family: var(--font-mono);
+  letter-spacing: 0.5px;
+}
+
+.hero-badges { display: flex; gap: 12px; flex-wrap: wrap; }
+.hero-badge {
+  display: flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 4px;
+  padding: 8px 14px;
+  font-size: 12px;
+  color: var(--gray3);
+  font-family: var(--font-body);
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+.hero-badge-icon { font-size: 14px; }
+
+/* Hero right — visual placeholder */
+.hero-visual {
+  position: relative;
+  aspect-ratio: 4/3;
+  background: var(--dark);
+  border-radius: 8px;
+  border: 1px solid rgba(227,6,19,0.2);
+  overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+.hero-visual-inner {
+  position: relative; z-index: 2;
+  text-align: center;
+  padding: 32px;
+}
+.hero-visual-placeholder-text {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--gray2);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 16px;
+}
+.hero-visual-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(227,6,19,0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(227,6,19,0.1) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+.hero-visual-glow {
+  position: absolute;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(227,6,19,0.15) 0%, transparent 70%);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulse 3s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100% { opacity: 0.6; transform: translate(-50%,-50%) scale(1); } 50% { opacity: 1; transform: translate(-50%,-50%) scale(1.1); } }
+
+/* 5G icon animation */
+.signal-rings {
+  position: relative;
+  width: 80px; height: 80px;
+  margin: 0 auto;
+}
+.signal-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid var(--red);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  animation: ring-out 2.5s ease-out infinite;
+}
+.signal-ring:nth-child(1) { width: 24px; height: 24px; animation-delay: 0s; }
+.signal-ring:nth-child(2) { width: 48px; height: 48px; animation-delay: 0.5s; }
+.signal-ring:nth-child(3) { width: 72px; height: 72px; animation-delay: 1s; }
+@keyframes ring-out {
+  0% { opacity: 1; transform: translate(-50%, -50%) scale(0.5); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.2); }
+}
+.signal-center {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-display);
+  font-size: 22px; font-weight: 800;
+  color: var(--red);
+  z-index: 2;
+}
+
+/* Scroll arrow */
+.scroll-arrow {
+  position: absolute;
+  bottom: 32px; left: 50%;
+  transform: translateX(-50%);
+  color: var(--gray2);
+  cursor: pointer;
+  animation: bounce 2s ease-in-out infinite;
+  z-index: 3;
+}
+@keyframes bounce { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(8px); } }
+.scroll-arrow svg { display: block; }
+
+/* Staggered fade-in for hero elements */
+.hero-anim { opacity: 0; transform: translateY(24px); animation: fadeUp 600ms cubic-bezier(0.4,0,0.2,1) forwards; }
+.hero-anim:nth-child(1) { animation-delay: 100ms; }
+.hero-anim:nth-child(2) { animation-delay: 200ms; }
+.hero-anim:nth-child(3) { animation-delay: 300ms; }
+.hero-anim:nth-child(4) { animation-delay: 400ms; }
+.hero-anim:nth-child(5) { animation-delay: 500ms; }
+.hero-anim:nth-child(6) { animation-delay: 600ms; }
+@keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+/* ── TRUST BAR ── */
+#trust {
+  background: var(--gray4);
+  padding: 56px 0;
+  border-bottom: 1px solid var(--gray3);
+}
+.trust-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+.trust-stat {
+  text-align: center;
+  padding: 0 32px;
+  border-right: 1px solid var(--gray3);
+}
+.trust-stat:last-child { border-right: none; }
+.trust-number {
+  font-family: var(--font-display);
+  font-size: 56px;
+  font-weight: 800;
+  color: var(--red);
+  line-height: 1;
+  display: block;
+}
+.trust-label {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--gray1);
+  margin-top: 8px;
+  line-height: 1.4;
+}
+
+/* ── BENEFITS ── */
+#benefits { padding: 96px 0; background: var(--white); }
+.section-heading { text-align: center; margin-bottom: 56px; }
+.section-heading h2 {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3vw, 36px);
+  font-weight: 700;
+  color: var(--black);
+  letter-spacing: -0.5px;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.benefit-card {
+  background: var(--white);
+  border: 1px solid var(--gray3);
+  border-radius: 8px;
+  padding: 36px;
+  transition: box-shadow 200ms ease-out, transform 200ms ease-out, border-color 200ms;
+  position: relative;
+  overflow: hidden;
+}
+.benefit-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 0;
+  background: var(--red);
+  transition: height 200ms ease-out;
+}
+.benefit-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.1); transform: scale(1.01); border-color: rgba(227,6,19,0.3); }
+.benefit-card:hover::before { height: 100%; }
+.benefit-icon { font-size: 32px; margin-bottom: 20px; display: block; }
+.benefit-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--black);
+  margin-bottom: 10px;
+  letter-spacing: -0.3px;
+}
+.benefit-desc {
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--gray1);
+  line-height: 1.65;
+}
+
+/* ── PROGRAM ── */
+#program { padding: 96px 0; background: var(--black); }
+#program .section-heading h2 { color: var(--white); }
+#program .section-heading p { color: var(--gray2); font-size: 16px; margin-top: 12px; }
+
+.tabs-nav {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 4px;
+  background: var(--dark);
+  border-radius: 6px;
+  padding: 4px;
+  flex-wrap: wrap;
+}
+.tab-btn {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  color: var(--gray2);
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 8px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 200ms ease-out;
+  text-align: center;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+.tab-btn:hover { color: var(--white); background: rgba(255,255,255,0.05); }
+.tab-btn.active { background: var(--red); color: var(--white); }
+
+.tab-panel {
+  display: none;
+  background: var(--dark);
+  border-radius: 6px;
+  padding: 40px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.tab-panel.active { display: block; animation: fadeUp 300ms ease-out forwards; }
+
+.tab-panel-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.tab-day-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--red);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.tab-day-title {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 24px;
+  line-height: 1.2;
+  letter-spacing: -0.3px;
+}
+.tab-topics { list-style: none; }
+.tab-topics li {
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--gray3);
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex; align-items: flex-start; gap: 10px;
+}
+.tab-topics li:last-child { border-bottom: none; }
+.tab-topics li::before {
+  content: '';
+  display: inline-block;
+  width: 6px; height: 6px;
+  background: var(--red);
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+
+.tab-visual-placeholder {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 6px;
+  aspect-ratio: 4/3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.tab-visual-icon { font-size: 48px; opacity: 0.3; }
+.tab-visual-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--gray2);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* ── STEPS ── */
+#steps { padding: 96px 0; background: var(--gray4); }
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
+  gap: 0;
+  align-items: start;
+  margin-top: 56px;
+}
+.step-arrow {
+  padding: 0 16px;
+  padding-top: 40px;
+  color: var(--gray3);
+}
+.step-card {
+  background: var(--white);
+  border-radius: 8px;
+  padding: 36px 28px;
+  text-align: center;
+  position: relative;
+  transition: box-shadow 200ms ease-out;
+}
+.step-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
+.step-number {
+  font-family: var(--font-display);
+  font-size: 64px;
+  font-weight: 800;
+  color: var(--red);
+  opacity: 0.12;
+  position: absolute;
+  top: 16px; right: 20px;
+  line-height: 1;
+}
+.step-icon { font-size: 36px; margin-bottom: 16px; display: block; }
+.step-title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--black);
+  margin-bottom: 12px;
+  letter-spacing: -0.2px;
+}
+.step-desc {
+  font-size: 14px;
+  color: var(--gray1);
+  line-height: 1.6;
+}
+.step-note {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--gray2);
+  margin-top: 12px;
+  letter-spacing: 0.5px;
+}
+.steps-cta { text-align: center; margin-top: 56px; }
+.steps-cta .btn-primary { font-size: 17px; padding: 18px 44px; }
+
+/* ── SOCIAL PROOF ── */
+#proof { padding: 96px 0; background: var(--white); }
+.proof-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+.proof-card {
+  background: var(--gray4);
+  border-left: 4px solid var(--red);
+  border-radius: 0 8px 8px 0;
+  padding: 28px;
+  position: relative;
+}
+.proof-quote-icon {
+  font-family: var(--font-display);
+  font-size: 64px;
+  font-weight: 800;
+  color: var(--red);
+  opacity: 0.15;
+  position: absolute;
+  top: 8px; right: 20px;
+  line-height: 1;
+}
+.proof-text {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-style: italic;
+  color: var(--gray1);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+.proof-avatar {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--red);
+  color: var(--white);
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.proof-meta { display: flex; align-items: center; gap: 12px; }
+.proof-name {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--black);
+}
+.proof-role {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--gray2);
+  margin-top: 2px;
+  letter-spacing: 0.5px;
+}
+.proof-placeholder-badge {
+  display: inline-block;
+  background: rgba(227,6,19,0.1);
+  color: var(--red);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 2px;
+  margin-bottom: 8px;
+}
+
+/* ── ELIGIBILITY ── */
+#eligibility { padding: 96px 0; background: var(--black); }
+.elig-card {
+  max-width: 780px;
+  margin: 48px auto 0;
+  background: var(--dark);
+  border: 2px solid var(--red);
+  border-radius: 12px;
+  padding: 48px;
+  position: relative;
+  overflow: hidden;
+}
+.elig-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 60% at 100% 0%, rgba(227,6,19,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+.elig-free-badge {
+  position: absolute;
+  top: -1px; right: 32px;
+  background: var(--red);
+  color: var(--white);
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 6px 16px 8px;
+  border-radius: 0 0 6px 6px;
+}
+.elig-title {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 32px;
+  letter-spacing: -0.3px;
+}
+.elig-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.elig-col-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--red);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.elig-list { list-style: none; }
+.elig-list li {
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--gray3);
+  padding: 9px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  display: flex; gap: 10px; align-items: flex-start;
+}
+.elig-list li:last-child { border-bottom: none; }
+.elig-list li span { flex-shrink: 0; }
+.elig-free {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--red);
+  margin-bottom: 12px;
+}
+.elig-slots {
+  margin-top: 24px;
+  padding: 14px 20px;
+  background: rgba(227,6,19,0.1);
+  border: 1px solid rgba(227,6,19,0.25);
+  border-radius: 6px;
+  display: flex; align-items: center; gap: 10px;
+}
+.elig-slots-text {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--gray3);
+  letter-spacing: 0.5px;
+}
+.elig-slots-text strong { color: var(--red-light); }
+.elig-cta { margin-top: 36px; }
+.elig-cta .btn-primary { font-size: 17px; padding: 16px 36px; }
+
+/* ── FAQ ── */
+#faq { padding: 96px 0; background: var(--gray4); }
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 48px;
+}
+.faq-item {
+  background: var(--white);
+  border-radius: 6px;
+  border: 1px solid var(--gray3);
+  overflow: hidden;
+  transition: border-color 200ms;
+}
+.faq-item.open { border-color: rgba(227,6,19,0.3); }
+.faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  text-align: left;
+  gap: 16px;
+}
+.faq-question-text {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--black);
+  letter-spacing: -0.2px;
+}
+.faq-toggle {
+  font-size: 20px;
+  color: var(--red);
+  font-weight: 300;
+  flex-shrink: 0;
+  line-height: 1;
+  font-family: var(--font-display);
+  transition: transform 200ms ease;
+}
+.faq-item.open .faq-toggle { transform: rotate(45deg); }
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 200ms ease, padding 200ms ease;
+}
+.faq-item.open .faq-answer { max-height: 300px; }
+.faq-answer-inner {
+  padding: 0 24px 20px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--gray1);
+  line-height: 1.7;
+  border-top: 1px solid var(--gray3);
+  padding-top: 16px;
+}
+
+/* ── FINAL CTA ── */
+#final-cta {
+  padding: 120px 0;
+  background: linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 50%, #1A0000 100%);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+#final-cta::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(227,6,19,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(227,6,19,0.04) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+.final-cta-inner { position: relative; z-index: 2; max-width: 840px; margin: 0 auto; }
+.final-cta-h2 {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4.5vw, 54px);
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1.1;
+  letter-spacing: -1px;
+  margin-bottom: 40px;
+}
+.final-cta-h2 em { color: var(--red); font-style: normal; }
+
+.final-ctas { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+.final-ctas .btn-primary { font-size: 20px; padding: 20px 56px; }
+.final-microcopy {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--gray2);
+  line-height: 1.6;
+}
+.final-urgency {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: rgba(255,80,80,0.8);
+  letter-spacing: 0.5px;
+  margin-top: 4px;
+}
+
+/* Countdown */
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin: 40px 0;
+}
+.countdown-unit {
+  background: var(--dark);
+  border-radius: 4px;
+  padding: 20px 24px;
+  min-width: 88px;
+  text-align: center;
+}
+.countdown-num {
+  font-family: var(--font-display);
+  font-size: 44px;
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1;
+  display: block;
+}
+.countdown-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--gray2);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 6px;
+  display: block;
+}
+.countdown-sep {
+  font-family: var(--font-display);
+  font-size: 44px;
+  font-weight: 800;
+  color: var(--red);
+  opacity: 0.4;
+  line-height: 1;
+  padding-top: 20px;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: #050505;
+  padding: 48px 0 32px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.footer-inner {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 40px;
+}
+.footer-logo-mark {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: -1px;
+}
+.footer-logo-mark span { color: var(--red); }
+.footer-brand-name {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--gray2);
+  margin-top: 6px;
+  margin-bottom: 16px;
+}
+.footer-copy {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--gray2);
+  opacity: 0.6;
+  letter-spacing: 0.3px;
+  line-height: 1.6;
+}
+.footer-col-title {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--red);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.footer-links { list-style: none; }
+.footer-links li {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--gray2);
+  padding: 6px 0;
+  display: flex; align-items: flex-start; gap: 8px;
+}
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-bottom-text {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: rgba(255,255,255,0.2);
+  letter-spacing: 0.5px;
+}
+
+/* ── STICKY BOTTOM BAR ── */
+#sticky-bar {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: var(--red);
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  z-index: 999;
+  transform: translateY(100%);
+  transition: transform 300ms cubic-bezier(0.4,0,0.2,1);
+}
+#sticky-bar.visible { transform: translateY(0); }
+.sticky-bar-text {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.3px;
+}
+.sticky-bar-btn {
+  background: var(--white);
+  color: var(--red);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 14px;
+  padding: 8px 20px;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: opacity 200ms;
+}
+.sticky-bar-btn:hover { opacity: 0.9; }
+
+/* ── MOBILE ── */
+@media (max-width: 1023px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+  .hero-visual { display: none; }
+  .hero-h1 { font-size: clamp(36px, 6vw, 52px); }
+  .trust-stats { grid-template-columns: repeat(2, 1fr); }
+  .trust-stat { border-right: none; border-bottom: 1px solid var(--gray3); padding: 24px; }
+  .trust-stat:nth-child(odd) { border-right: 1px solid var(--gray3); }
+  .trust-stat:nth-child(3), .trust-stat:nth-child(4) { border-bottom: none; }
+  .benefits-grid { grid-template-columns: 1fr; }
+  .tab-panel-inner { grid-template-columns: 1fr; }
+  .tab-visual-placeholder { display: none; }
+  .steps-grid { grid-template-columns: 1fr; }
+  .step-arrow { display: none; }
+  .proof-grid { grid-template-columns: 1fr; }
+  .elig-cols { grid-template-columns: 1fr; gap: 24px; }
+  .faq-grid { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+  .countdown { gap: 8px; }
+  .countdown-unit { min-width: 64px; padding: 14px 12px; }
+  .countdown-num { font-size: 32px; }
+}
+
+@media (max-width: 767px) {
+  .nav-menu { display: none; }
+  .nav-hotline { display: none; }
+  .hamburger { display: flex; }
+  .nav-cta { display: none; }
+  .hero-badges { gap: 8px; }
+  .hero-badge { font-size: 11px; padding: 6px 10px; }
+  .sticky-bar-text { font-size: 13px; }
+  .tabs-nav { overflow-x: auto; flex-wrap: nowrap; }
+  .tab-btn { font-size: 12px; padding: 10px 6px; white-space: nowrap; }
+  body { padding-bottom: 56px; }
+}
+
+/* Mobile nav overlay */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 68px; left: 0; right: 0; bottom: 0;
+  background: rgba(10,10,10,0.97);
+  z-index: 999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+.mobile-nav.open { display: flex; }
+.mobile-nav a {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--white);
+  text-decoration: none;
+  letter-spacing: -0.5px;
+}
+.mobile-nav a:hover { color: var(--red); }
+.mobile-nav .btn-primary { font-size: 18px; padding: 16px 40px; margin-top: 8px; }
+
+/* Scroll reveal */
+.reveal { opacity: 0; transform: translateY(32px); transition: opacity 600ms ease-out, transform 600ms ease-out; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">
+      <div>
+        <div class="nav-logo-mark">viettel</div>
+        <div class="nav-logo-sub" style="font-size:11px;font-weight:600;letter-spacing:1px;color:#E30613;margin-top:1px;">NETWORKS</div>
+      </div>
+      <div class="nav-logo-divider"></div>
+      <div class="nav-logo-sub">Tổng Công ty<br>Mạng lưới Viettel</div>
+    </a>
+
+    <ul class="nav-menu">
+      <li><a href="#benefits">Mục tiêu</a></li>
+      <li><a href="#program">Nội dung</a></li>
+      <li><a href="#proof">Giảng viên</a></li>
+      <li><a href="#eligibility">Quyền lợi</a></li>
+      <li><a href="#final-cta">Đăng ký</a></li>
+    </ul>
+
+    <div class="nav-right">
+      <span class="nav-hotline">Hotline: <strong>1789</strong></span>
+      <a href="#final-cta" class="btn-primary nav-cta">Đăng Ký Ngay</a>
+      <div class="hamburger" id="hamburger" onclick="toggleMobileNav()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile nav -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#benefits" onclick="closeMobileNav()">Mục tiêu</a>
+  <a href="#program" onclick="closeMobileNav()">Nội dung chương trình</a>
+  <a href="#proof" onclick="closeMobileNav()">Giảng viên</a>
+  <a href="#eligibility" onclick="closeMobileNav()">Quyền lợi</a>
+  <a href="#faq" onclick="closeMobileNav()">FAQ</a>
+  <a href="#final-cta" class="btn-primary" onclick="closeMobileNav()">Đăng Ký Ngay</a>
+</div>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-scan"></div>
+
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-eyebrow hero-anim">ĐÀO TẠO NỘI BỘ VIETTEL 2025</div>
+
+      <h1 class="hero-h1 hero-anim">
+        Làm Chủ <em>AI</em><br>Trong Mạng 5G —<br>Nâng Tầm Vận Hành<br>Viettel
+      </h1>
+
+      <p class="hero-sub hero-anim">
+        Chương trình đào tạo nội bộ 5 ngày toàn thời gian dành riêng cho kỹ sư vận hành mạng — từ AI cơ bản đến triển khai use-case thực tế.
+      </p>
+
+      <div class="hero-target hero-anim">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <span>Dành cho <strong>Kỹ sư RAN · Core · Cloud · Transmission · NOC/SOC</strong></span>
+      </div>
+
+      <div class="hero-ctas hero-anim">
+        <div class="cta-row">
+          <a href="#final-cta" class="btn-primary">Đăng Ký Tham Gia</a>
+          <a href="#program" class="btn-outline">Xem Nội Dung</a>
+        </div>
+        <p class="hero-micro">⏳ Hạn đăng ký: trước ngày khai giảng 05 ngày làm việc</p>
+      </div>
+
+      <div class="hero-badges hero-anim">
+        <div class="hero-badge"><span class="hero-badge-icon">🎓</span> Chứng nhận nội bộ</div>
+        <div class="hero-badge"><span class="hero-badge-icon">⏱</span> 5 Ngày Full-time</div>
+        <div class="hero-badge"><span class="hero-badge-icon">🔬</span> Thực hành thực tế</div>
+      </div>
+    </div>
+
+    <div class="hero-visual hero-anim">
+      <div class="hero-visual-grid"></div>
+      <div class="hero-visual-glow"></div>
+      <div class="hero-visual-inner">
+        <div class="signal-rings">
+          <div class="signal-ring"></div>
+          <div class="signal-ring"></div>
+          <div class="signal-ring"></div>
+          <div class="signal-center">5G</div>
+        </div>
+        <div class="hero-visual-placeholder-text">AI × 5G Network Operations</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-arrow" onclick="document.getElementById('trust').scrollIntoView({behavior:'smooth'})">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </div>
+</section>
+
+<!-- ── TRUST BAR ── -->
+<section id="trust">
+  <div class="container">
+    <div class="trust-stats">
+      <div class="trust-stat reveal">
+        <span class="trust-number" data-count="5">5</span>
+        <div class="trust-label">Ngày đào tạo chuyên sâu</div>
+      </div>
+      <div class="trust-stat reveal">
+        <span class="trust-number" data-count="4">4</span>
+        <div class="trust-label">Lĩnh vực: RAN · Core · Cloud · Transmission</div>
+      </div>
+      <div class="trust-stat reveal">
+        <span class="trust-number" data-count="100" data-suffix="%">100%</span>
+        <div class="trust-label">Học viên làm bài đánh giá cuối khóa</div>
+      </div>
+      <div class="trust-stat reveal">
+        <span class="trust-number" data-count="1" data-suffix="+">1+</span>
+        <div class="trust-label">Use-case AI thực tế mỗi nhóm</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BENEFITS ── -->
+<section id="benefits" style="scroll-margin-top:68px">
+  <div class="container">
+    <div class="section-heading reveal">
+      <div class="section-label">Mục tiêu khóa học</div>
+      <h2>Bạn Sẽ Đạt Được Gì Sau Khóa Học?</h2>
+      <div class="accent-bar"></div>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card reveal">
+        <span class="benefit-icon">🤖</span>
+        <h3 class="benefit-title">Nền tảng AI vững chắc</h3>
+        <p class="benefit-desc">Nắm vững AI, Machine Learning, Deep Learning và Generative AI ứng dụng trong viễn thông — từ lý thuyết đến thực tiễn vận hành.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <span class="benefit-icon">📡</span>
+        <h3 class="benefit-title">Thành thạo AI trong mạng 5G</h3>
+        <p class="benefit-desc">Hiểu và áp dụng AI-RAN, SON, AIOps, Predictive Maintenance vào vận hành mạng thực tế của Viettel.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <span class="benefit-icon">📊</span>
+        <h3 class="benefit-title">Phân tích dữ liệu chuyên sâu</h3>
+        <p class="benefit-desc">Phân tích dữ liệu KPI, Alarm và log hệ thống hiệu quả — phát hiện bất thường sớm hơn, giảm thời gian xử lý sự cố.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <span class="benefit-icon">🛠</span>
+        <h3 class="benefit-title">Xây dựng Use-case thực tế</h3>
+        <p class="benefit-desc">Tự thiết kế và trình bày use-case AI sẵn sàng triển khai pilot tại Viettel — không chỉ học lý thuyết.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROGRAM ── -->
+<section id="program" style="scroll-margin-top:68px">
+  <div class="container">
+    <div class="section-heading reveal">
+      <div class="section-label" style="color:var(--red)">Nội dung chương trình</div>
+      <h2 style="color:var(--white)">Lộ Trình 5 Ngày Học Tập</h2>
+      <div class="accent-bar"></div>
+      <p style="margin-top:16px">Từ nền tảng AI đến use-case sẵn sàng triển khai — mỗi ngày là một cột mốc rõ ràng</p>
+    </div>
+
+    <div class="reveal">
+      <div class="tabs-nav">
+        <button class="tab-btn active" onclick="switchTab(0)">Ngày 1</button>
+        <button class="tab-btn" onclick="switchTab(1)">Ngày 2</button>
+        <button class="tab-btn" onclick="switchTab(2)">Ngày 3</button>
+        <button class="tab-btn" onclick="switchTab(3)">Ngày 4</button>
+        <button class="tab-btn" onclick="switchTab(4)">Ngày 5</button>
+      </div>
+
+      <div class="tab-panel active" id="tab-0">
+        <div class="tab-panel-inner">
+          <div>
+            <div class="tab-day-label">Ngày 1 — Nền tảng</div>
+            <h3 class="tab-day-title">Tổng Quan AI & AI Trong Telco</h3>
+            <ul class="tab-topics">
+              <li>Khái niệm AI / ML / Deep Learning / GenAI</li>
+              <li>Kiến trúc mạng 5G và Autonomous Network</li>
+              <li>Xu hướng AI trong vận hành mạng toàn cầu</li>
+              <li>Case study từ các nhà mạng lớn (Ericsson, Nokia, Huawei)</li>
+            </ul>
+          </div>
+          <div class="tab-visual-placeholder">
+            <div class="tab-visual-icon">🌐</div>
+            <div class="tab-visual-label">Hình ảnh bài giảng · [CẦN BỔ SUNG]</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="tab-1">
+        <div class="tab-panel-inner">
+          <div>
+            <div class="tab-day-label">Ngày 2 — Vô tuyến</div>
+            <h3 class="tab-day-title">AI Trong RAN & Tối Ưu Vô Tuyến</h3>
+            <ul class="tab-topics">
+              <li>AI-RAN, Self-Organizing Network (SON)</li>
+              <li>Near-RT RIC và Non-RT RIC architecture</li>
+              <li>Tối ưu coverage, capacity và energy saving</li>
+              <li>Phân tích KPI và phát hiện bất thường vô tuyến</li>
+            </ul>
+          </div>
+          <div class="tab-visual-placeholder">
+            <div class="tab-visual-icon">📡</div>
+            <div class="tab-visual-label">Dashboard RAN · [CẦN BỔ SUNG]</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="tab-2">
+        <div class="tab-panel-inner">
+          <div>
+            <div class="tab-day-label">Ngày 3 — Core & Cloud</div>
+            <h3 class="tab-day-title">AI Trong Core & Cloud</h3>
+            <ul class="tab-topics">
+              <li>AIOps trong Core Network</li>
+              <li>AI trong Cloud Native và Kubernetes</li>
+              <li>Predictive Maintenance và log analytics</li>
+              <li>GenAI hỗ trợ troubleshooting tự động</li>
+            </ul>
+          </div>
+          <div class="tab-visual-placeholder">
+            <div class="tab-visual-icon">☁️</div>
+            <div class="tab-visual-label">Cloud Architecture · [CẦN BỔ SUNG]</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="tab-3">
+        <div class="tab-panel-inner">
+          <div>
+            <div class="tab-day-label">Ngày 4 — Dữ liệu</div>
+            <h3 class="tab-day-title">Dữ Liệu & Xây Dựng Use-case AI</h3>
+            <ul class="tab-topics">
+              <li>Khai thác dữ liệu KPI / Alarm / Tracing</li>
+              <li>Xây dựng pipeline dữ liệu cho AI</li>
+              <li>Workshop thiết kế use-case theo nhóm</li>
+              <li>Dashboard AI monitoring thực chiến</li>
+            </ul>
+          </div>
+          <div class="tab-visual-placeholder">
+            <div class="tab-visual-icon">📊</div>
+            <div class="tab-visual-label">AI Dashboard · [CẦN BỔ SUNG]</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="tab-4">
+        <div class="tab-panel-inner">
+          <div>
+            <div class="tab-day-label">Ngày 5 — Triển khai</div>
+            <h3 class="tab-day-title">Triển Khai Thực Tế & Đánh Giá</h3>
+            <ul class="tab-topics">
+              <li>AI Governance và bảo mật dữ liệu</li>
+              <li>Đánh giá ROI khi triển khai AI trong telco</li>
+              <li>Thuyết trình use-case theo nhóm trước ban giám khảo</li>
+              <li>Kiểm tra cuối khóa — nhận chứng nhận</li>
+            </ul>
+          </div>
+          <div class="tab-visual-placeholder">
+            <div class="tab-visual-icon">🚀</div>
+            <div class="tab-visual-label">Ảnh lớp học · [CẦN BỔ SUNG]</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── STEPS ── -->
+<section id="steps" style="scroll-margin-top:68px">
+  <div class="container">
+    <div class="section-heading reveal">
+      <div class="section-label">Quy trình đăng ký</div>
+      <h2>Tham Gia Chỉ Trong 3 Bước</h2>
+      <div class="accent-bar"></div>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card reveal">
+        <span class="step-number">01</span>
+        <span class="step-icon">📝</span>
+        <h3 class="step-title">Điền Thông Tin Đăng Ký</h3>
+        <p class="step-desc">Điền mẫu đăng ký: Mã nhân viên, họ tên, đơn vị, kinh nghiệm, mục tiêu tham gia.</p>
+        <p class="step-note">⏰ Hạn chót: trước khai giảng 05 ngày làm việc</p>
+      </div>
+      <div class="step-arrow reveal">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 3">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </div>
+      <div class="step-card reveal">
+        <span class="step-number">02</span>
+        <span class="step-icon">✅</span>
+        <h3 class="step-title">Nhận Xác Nhận</h3>
+        <p class="step-desc">Phòng Nhân sự xác nhận tham gia qua email nội bộ. Nhận tài liệu chuẩn bị và hướng dẫn tham gia.</p>
+        <p class="step-note">📧 training@viettel.com.vn</p>
+      </div>
+      <div class="step-arrow reveal">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 3">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </div>
+      <div class="step-card reveal">
+        <span class="step-number">03</span>
+        <span class="step-icon">🚀</span>
+        <h3 class="step-title">Tham Gia & Thực Hành</h3>
+        <p class="step-desc">5 ngày học tập full-time, thực hành trực tiếp trên laptop. Nhận chứng nhận và gia nhập cộng đồng AI Telco.</p>
+        <p class="step-note">🏅 Chứng nhận hoàn thành nội bộ</p>
+      </div>
+    </div>
+    <div class="steps-cta reveal">
+      <a href="#final-cta" class="btn-primary">Bắt Đầu Ngay — Điền Thông Tin Đăng Ký</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── SOCIAL PROOF ── -->
+<section id="proof" style="scroll-margin-top:68px">
+  <div class="container">
+    <div class="section-heading reveal">
+      <div class="section-label">Lãnh đạo & Chuyên gia nói</div>
+      <h2>Điều Lãnh Đạo & Chuyên Gia Nói</h2>
+      <div class="accent-bar"></div>
+    </div>
+    <div class="proof-grid">
+      <div class="proof-card reveal">
+        <div class="proof-quote-icon">"</div>
+        <div class="proof-placeholder-badge">CẦN BỔ SUNG</div>
+        <p class="proof-text">AI không còn là tương lai — AI là năng lực vận hành cốt lõi của một nhà mạng dẫn đầu. Chương trình này là bước đầu tiên để mỗi kỹ sư Viettel làm chủ công nghệ đó.</p>
+        <div class="proof-meta">
+          <div class="proof-avatar">LĐ</div>
+          <div>
+            <div class="proof-name">[Lãnh đạo Viettel]</div>
+            <div class="proof-role">CHỨC DANH · ĐƠN VỊ · [CẦN BỔ SUNG]</div>
+          </div>
+        </div>
+      </div>
+      <div class="proof-card reveal">
+        <div class="proof-quote-icon">"</div>
+        <div class="proof-placeholder-badge">CẦN BỔ SUNG</div>
+        <p class="proof-text">Chương trình được thiết kế bám sát thực tế mạng Viettel — từ dữ liệu KPI thật đến use-case triển khai được ngay. Học viên sẽ rời khóa học với sản phẩm cụ thể trong tay.</p>
+        <div class="proof-meta">
+          <div class="proof-avatar">GV</div>
+          <div>
+            <div class="proof-name">[Giảng viên chính]</div>
+            <div class="proof-role">CHUYÊN GIA AI/TELCO · [CẦN BỔ SUNG]</div>
+          </div>
+        </div>
+      </div>
+      <div class="proof-card reveal">
+        <div class="proof-quote-icon">"</div>
+        <div class="proof-placeholder-badge">CẦN BỔ SUNG</div>
+        <p class="proof-text">Đây là cơ hội hiếm có để kỹ sư vận hành hiểu sâu về AIOps và tự xây dựng năng lực AI nội sinh cho đơn vị — thay vì phụ thuộc vào vendor ngoài.</p>
+        <div class="proof-meta">
+          <div class="proof-avatar">CV</div>
+          <div>
+            <div class="proof-name">[Chuyên gia tư vấn]</div>
+            <div class="proof-role">AI ARCHITECT · [CẦN BỔ SUNG]</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ELIGIBILITY ── -->
+<section id="eligibility" style="scroll-margin-top:68px">
+  <div class="container">
+    <div class="section-heading reveal">
+      <div class="section-label" style="color:var(--red)">Điều kiện & quyền lợi</div>
+      <h2 style="color:var(--white)">Thông Tin Đào Tạo & Điều Kiện Tham Gia</h2>
+      <div class="accent-bar"></div>
+    </div>
+    <div class="elig-card reveal">
+      <div class="elig-free-badge">MIỄN PHÍ 100%</div>
+      <h3 class="elig-title">Ai có thể tham gia?</h3>
+      <div class="elig-cols">
+        <div>
+          <div class="elig-col-label">Đối tượng tham gia</div>
+          <ul class="elig-list">
+            <li><span>✅</span> Kỹ sư vận hành RAN / Core / Cloud / Transmission</li>
+            <li><span>✅</span> Kỹ sư tối ưu mạng</li>
+            <li><span>✅</span> Nhân sự NOC / SOC</li>
+            <li><span>✅</span> CBCNV Viettel có nhu cầu tìm hiểu AI</li>
+          </ul>
+          <div class="elig-slots">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E30613" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span class="elig-slots-text">Số lượng giới hạn: <strong>[CẦN BỔ SUNG] chỗ/khóa</strong></span>
+          </div>
+        </div>
+        <div>
+          <div class="elig-col-label">Quyền lợi học viên</div>
+          <div class="elig-free">MIỄN PHÍ 100%</div>
+          <ul class="elig-list">
+            <li><span>🎁</span> Chi phí do Tổng Công ty Mạng lưới Viettel tài trợ toàn bộ</li>
+            <li><span>💻</span> Yêu cầu: Có laptop + kiến thức cơ bản mạng 4G/5G</li>
+            <li><span>📜</span> Chứng nhận hoàn thành nội bộ Viettel</li>
+            <li><span>📚</span> Bộ tài liệu đầy đủ + template AI Telco</li>
+            <li><span>👥</span> Cộng đồng AI Telco nội bộ Viettel</li>
+            <li><span>🎯</span> Mentoring & theo dõi KPI sau 30–60–90 ngày</li>
+          </ul>
+          <div class="elig-cta">
+            <a href="#final-cta" class="btn-primary">Đăng Ký Giữ Chỗ Ngay</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section id="faq" style="scroll-margin-top:68px">
+  <div class="container">
+    <div class="section-heading reveal">
+      <div class="section-label">Giải đáp thắc mắc</div>
+      <h2>Câu Hỏi Thường Gặp</h2>
+      <div class="accent-bar"></div>
+    </div>
+    <div class="faq-grid reveal">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-question-text">Khóa học này dành cho ai?</span>
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Dành cho kỹ sư vận hành RAN, Core, Cloud, Transmission, kỹ sư tối ưu mạng và nhân sự NOC/SOC có kiến thức cơ bản về mạng 4G/5G.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-question-text">Tôi cần chuẩn bị gì trước khi tham gia?</span>
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Mang laptop để thực hành. Khuyến khích tạo sẵn tài khoản AI: Gemini, Claude, ChatGPT để sẵn sàng thực hành từ ngày đầu tiên.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-question-text">Hình thức học là online hay offline?</span>
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Blended Learning — kết hợp offline tại Trung tâm Đào tạo Viettel và online qua Microsoft Teams/Zoom, đảm bảo linh hoạt cho CBCNV tại các địa phương.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-question-text">Sau khóa học tôi nhận được gì?</span>
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Chứng nhận hoàn thành nội bộ, bộ tài liệu đầy đủ, template AI Telco và quyền gia nhập cộng đồng AI Telco nội bộ Viettel — mạng lưới hỗ trợ lâu dài.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-question-text">Có hỗ trợ sau khi học xong không?</span>
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Có. Viettel theo dõi lộ trình ứng dụng AI sau 30–60–90 ngày, hỗ trợ mentoring và đánh giá KPI vận hành để đảm bảo kiến thức được áp dụng thực tế.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-question-text">Hạn đăng ký và ngày khai giảng?</span>
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Hạn đăng ký: trước ngày khai giảng 05 ngày làm việc. Ngày khai giảng: <strong>[CẦN BỔ SUNG]</strong>. Liên hệ Phòng Nhân sự — Hotline 1789 hoặc training@viettel.com.vn.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FINAL CTA ── -->
+<section id="final-cta" style="scroll-margin-top:68px">
+  <div class="final-cta-inner container">
+    <div class="reveal">
+      <div class="section-label">Đăng ký ngay</div>
+      <h2 class="final-cta-h2">
+        Đừng Để Mạng 5G Chạy<br>Mà Không Có <em>AI</em> —<br>Đăng Ký Ngay Hôm Nay
+      </h2>
+    </div>
+
+    <!-- Countdown -->
+    <div class="countdown reveal">
+      <div class="countdown-unit">
+        <span class="countdown-num" id="cd-days">--</span>
+        <span class="countdown-label">Ngày</span>
+      </div>
+      <span class="countdown-sep">:</span>
+      <div class="countdown-unit">
+        <span class="countdown-num" id="cd-hours">--</span>
+        <span class="countdown-label">Giờ</span>
+      </div>
+      <span class="countdown-sep">:</span>
+      <div class="countdown-unit">
+        <span class="countdown-num" id="cd-mins">--</span>
+        <span class="countdown-label">Phút</span>
+      </div>
+      <span class="countdown-sep">:</span>
+      <div class="countdown-unit">
+        <span class="countdown-num" id="cd-secs">--</span>
+        <span class="countdown-label">Giây</span>
+      </div>
+    </div>
+    <p style="font-family:var(--font-mono);font-size:11px;color:var(--gray2);text-align:center;margin-top:-16px;margin-bottom:32px;letter-spacing:1px;">
+      KHAI GIẢNG: <strong style="color:var(--red)">[CẦN BỔ SUNG NGÀY KHAI GIẢNG]</strong>
+    </p>
+
+    <!-- Form -->
+    <div style="background:var(--dark);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:40px;max-width:640px;margin:0 auto 40px;text-align:left;" class="reveal">
+      <h3 style="font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--white);margin-bottom:24px;letter-spacing:-0.3px;">Đăng Ký Tham Gia</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div>
+          <label style="font-family:var(--font-mono);font-size:10px;color:var(--gray2);letter-spacing:2px;text-transform:uppercase;display:block;margin-bottom:6px;">Mã nhân viên *</label>
+          <input type="text" placeholder="VD: VT-123456" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:4px;padding:11px 14px;color:var(--white);font-family:var(--font-body);font-size:14px;outline:none;transition:border-color 200ms;" onfocus="this.style.borderColor='#E30613'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+        </div>
+        <div>
+          <label style="font-family:var(--font-mono);font-size:10px;color:var(--gray2);letter-spacing:2px;text-transform:uppercase;display:block;margin-bottom:6px;">Họ và tên *</label>
+          <input type="text" placeholder="Nguyễn Văn A" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:4px;padding:11px 14px;color:var(--white);font-family:var(--font-body);font-size:14px;outline:none;transition:border-color 200ms;" onfocus="this.style.borderColor='#E30613'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+        </div>
+        <div>
+          <label style="font-family:var(--font-mono);font-size:10px;color:var(--gray2);letter-spacing:2px;text-transform:uppercase;display:block;margin-bottom:6px;">Đơn vị / Phòng ban *</label>
+          <input type="text" placeholder="VD: Trung tâm RAN miền Nam" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:4px;padding:11px 14px;color:var(--white);font-family:var(--font-body);font-size:14px;outline:none;transition:border-color 200ms;" onfocus="this.style.borderColor='#E30613'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+        </div>
+        <div>
+          <label style="font-family:var(--font-mono);font-size:10px;color:var(--gray2);letter-spacing:2px;text-transform:uppercase;display:block;margin-bottom:6px;">Chuyên môn *</label>
+          <select style="width:100%;background:#1A1A1A;border:1px solid rgba(255,255,255,0.1);border-radius:4px;padding:11px 14px;color:var(--gray3);font-family:var(--font-body);font-size:14px;outline:none;">
+            <option value="">Chọn chuyên môn</option>
+            <option>RAN</option><option>Core</option><option>Cloud</option>
+            <option>Transmission</option><option>NOC/SOC</option><option>Khác</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-family:var(--font-mono);font-size:10px;color:var(--gray2);letter-spacing:2px;text-transform:uppercase;display:block;margin-bottom:6px;">Kinh nghiệm 4G/5G *</label>
+          <select style="width:100%;background:#1A1A1A;border:1px solid rgba(255,255,255,0.1);border-radius:4px;padding:11px 14px;color:var(--gray3);font-family:var(--font-body);font-size:14px;outline:none;">
+            <option value="">Chọn mức kinh nghiệm</option>
+            <option>Dưới 1 năm</option><option>1–3 năm</option><option>Trên 3 năm</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-family:var(--font-mono);font-size:10px;color:var(--gray2);letter-spacing:2px;text-transform:uppercase;display:block;margin-bottom:6px;">Email nội bộ *</label>
+          <input type="email" placeholder="ten@viettel.com.vn" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:4px;padding:11px 14px;color:var(--white);font-family:var(--font-body);font-size:14px;outline:none;transition:border-color 200ms;" onfocus="this.style.borderColor='#E30613'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+        </div>
+      </div>
+      <div style="margin-top:16px;">
+        <label style="font-family:var(--font-mono);font-size:10px;color:var(--gray2);letter-spacing:2px;text-transform:uppercase;display:block;margin-bottom:6px;">Mục tiêu tham gia (tùy chọn)</label>
+        <textarea placeholder="Bạn muốn học gì / áp dụng AI vào phần việc nào?" rows="3" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:4px;padding:11px 14px;color:var(--white);font-family:var(--font-body);font-size:14px;outline:none;resize:vertical;"></textarea>
+      </div>
+      <button onclick="handleSubmit()" style="margin-top:20px;width:100%;background:var(--red);color:var(--white);font-family:var(--font-display);font-weight:700;font-size:18px;padding:16px;border:none;border-radius:4px;cursor:pointer;letter-spacing:0.3px;transition:background 200ms;" onmouseover="this.style.background='#B30000'" onmouseout="this.style.background='#E30613'">
+        Đăng Ký Tham Gia Ngay →
+      </button>
+      <p style="font-family:var(--font-mono);font-size:11px;color:var(--gray2);text-align:center;margin-top:12px;letter-spacing:0.5px;">
+        * Endpoint form: <strong style="color:var(--red)">[CẦN BỔ SUNG]</strong> · Hoặc gửi về training@viettel.com.vn
+      </p>
+    </div>
+
+    <div class="final-ctas reveal">
+      <p class="final-microcopy">Hoàn toàn miễn phí cho CBCNV Viettel · Chứng nhận nội bộ · Hỗ trợ sau đào tạo 90 ngày</p>
+      <p class="final-urgency">⚡ Hạn đăng ký: trước ngày khai giảng 05 ngày làm việc — Số lượng chỗ có hạn</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo-mark"><span>viettel</span> NETWORKS</div>
+        <div class="footer-brand-name">Tổng Công ty Mạng lưới Viettel</div>
+        <p class="footer-copy">© 2025 Tổng Công ty Mạng lưới Viettel.<br>Chương trình đào tạo nội bộ — Tài liệu không phân phối ra ngoài.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Liên hệ</div>
+        <ul class="footer-links">
+          <li>📧 training@viettel.com.vn</li>
+          <li>📞 Hotline nội bộ: 1789</li>
+          <li>🏢 Phòng Nhân sự — VTNet</li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Điều hướng nhanh</div>
+        <ul class="footer-links">
+          <li><a href="#benefits" style="color:inherit;text-decoration:none;">Mục tiêu</a></li>
+          <li><a href="#program" style="color:inherit;text-decoration:none;">Nội dung chương trình</a></li>
+          <li><a href="#eligibility" style="color:inherit;text-decoration:none;">Quyền lợi</a></li>
+          <li><a href="#faq" style="color:inherit;text-decoration:none;">Câu hỏi thường gặp</a></li>
+          <li><a href="#final-cta" style="color:inherit;text-decoration:none;">Đăng ký</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-bottom-text">VIETTEL NETWORKS · ĐÀO TẠO NỘI BỘ · 2025 · V1.0</span>
+      <span class="footer-bottom-text">Tài liệu nội bộ — Không phân phối ra ngoài</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ── STICKY BAR ── -->
+<div id="sticky-bar">
+  <span class="sticky-bar-text">Đăng Ký Khóa AI 5G Viettel 2025</span>
+  <a href="#final-cta" class="sticky-bar-btn">Đăng Ký Ngay</a>
+</div>
+
+<!-- ── SCRIPTS ── -->
+<script>
+// Navbar scroll
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 20);
+});
+
+// Mobile nav
+function toggleMobileNav() {
+  document.getElementById('mobileNav').classList.toggle('open');
+}
+function closeMobileNav() {
+  document.getElementById('mobileNav').classList.remove('open');
+}
+document.addEventListener('click', e => {
+  const nav = document.getElementById('mobileNav');
+  const hamburger = document.getElementById('hamburger');
+  if (nav.classList.contains('open') && !nav.contains(e.target) && !hamburger.contains(e.target)) {
+    nav.classList.remove('open');
+  }
+});
+
+// Tabs
+function switchTab(index) {
+  document.querySelectorAll('.tab-btn').forEach((b, i) => {
+    b.classList.toggle('active', i === index);
+  });
+  document.querySelectorAll('.tab-panel').forEach((p, i) => {
+    p.classList.toggle('active', i === index);
+  });
+}
+
+// FAQ accordion
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+// Sticky bar
+const heroSection = document.getElementById('hero');
+const stickyBar = document.getElementById('sticky-bar');
+const finalCta = document.getElementById('final-cta');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.target === heroSection && !e.isIntersecting) stickyBar.classList.add('visible');
+    if (e.target === heroSection && e.isIntersecting) stickyBar.classList.remove('visible');
+    if (e.target === finalCta && e.isIntersecting) stickyBar.classList.remove('visible');
+  });
+}, { threshold: 0.1 });
+observer.observe(heroSection);
+observer.observe(finalCta);
+
+// Scroll reveal
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      revealObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// CountUp animation
+const countUpObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const el = e.target;
+      const target = parseInt(el.dataset.count);
+      const suffix = el.dataset.suffix || '';
+      let start = 0;
+      const duration = 1500;
+      const step = timestamp => {
+        if (!start) start = timestamp;
+        const progress = Math.min((timestamp - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.floor(eased * target) + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+        else el.textContent = target + suffix;
+      };
+      requestAnimationFrame(step);
+      countUpObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('[data-count]').forEach(el => countUpObserver.observe(el));
+
+// Countdown timer — set target date here
+// [CẦN BỔ SUNG]: Thay '2025-09-01T08:00:00+07:00' bằng ngày khai giảng thực tế
+const TARGET_DATE = new Date('2025-09-01T08:00:00+07:00');
+function updateCountdown() {
+  const now = new Date();
+  const diff = TARGET_DATE - now;
+  if (diff <= 0) {
+    document.getElementById('cd-days').textContent = '00';
+    document.getElementById('cd-hours').textContent = '00';
+    document.getElementById('cd-mins').textContent = '00';
+    document.getElementById('cd-secs').textContent = '00';
+    return;
+  }
+  const days = Math.floor(diff / 86400000);
+  const hours = Math.floor((diff % 86400000) / 3600000);
+  const mins = Math.floor((diff % 3600000) / 60000);
+  const secs = Math.floor((diff % 60000) / 1000);
+  document.getElementById('cd-days').textContent = String(days).padStart(2,'0');
+  document.getElementById('cd-hours').textContent = String(hours).padStart(2,'0');
+  document.getElementById('cd-mins').textContent = String(mins).padStart(2,'0');
+  document.getElementById('cd-secs').textContent = String(secs).padStart(2,'0');
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+// Form submit placeholder
+function handleSubmit() {
+  alert('⚠️ [CẦN BỔ SUNG] Form endpoint chưa được cấu hình.\n\nVui lòng liên hệ:\n📧 training@viettel.com.vn\n📞 Hotline 1789');
+}
+
+// Smooth scroll offset for fixed nav
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      const top = target.getBoundingClientRect().top + window.scrollY - 72;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  });
+});
+</script>
+
+<!-- FAQ JSON-LD Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Khóa học này dành cho ai?","acceptedAnswer":{"@type":"Answer","text":"Dành cho kỹ sư vận hành RAN, Core, Cloud, Transmission, kỹ sư tối ưu mạng và nhân sự NOC/SOC có kiến thức cơ bản về mạng 4G/5G."}},
+    {"@type":"Question","name":"Tôi cần chuẩn bị gì trước khi tham gia?","acceptedAnswer":{"@type":"Answer","text":"Mang laptop để thực hành. Khuyến khích tạo sẵn tài khoản AI: Gemini, Claude, ChatGPT."}},
+    {"@type":"Question","name":"Hình thức học là online hay offline?","acceptedAnswer":{"@type":"Answer","text":"Blended Learning – kết hợp offline tại Trung tâm Đào tạo Viettel và online qua Microsoft Teams/Zoom."}},
+    {"@type":"Question","name":"Sau khóa học tôi nhận được gì?","acceptedAnswer":{"@type":"Answer","text":"Chứng nhận hoàn thành nội bộ, bộ tài liệu đầy đủ, template AI Telco và quyền gia nhập cộng đồng AI Telco nội bộ Viettel."}},
+    {"@type":"Question","name":"Có hỗ trợ sau khi học xong không?","acceptedAnswer":{"@type":"Answer","text":"Có. Viettel theo dõi lộ trình ứng dụng AI sau 30-60-90 ngày, hỗ trợ mentoring và đánh giá KPI vận hành."}}
+  ]
+}
+</script>
+</body>
+</html>
